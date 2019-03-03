@@ -1,1 +1,1 @@
-rspeer-open-src
+# Open source scripts for RSPeer
