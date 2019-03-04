@@ -1,6 +1,5 @@
 package script;
 
-import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
@@ -11,8 +10,6 @@ import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.script.Script;
 import org.rspeer.script.ScriptMeta;
 
-import java.util.function.Predicate;
-
 @ScriptMeta(name = "GlassBlower", developer = "buracc", desc = "Blows glass")
 public final class GlassBlower extends Script {
 
@@ -21,8 +18,6 @@ public final class GlassBlower extends Script {
     private static final int MIN_RUN_ENERGY = 3;
     private static final int PRODUCE_INDEX = 6;
     private static final String USE_ACTION = "Use";
-
-    private static final Predicate<Item> GLASSBLOWING_PIPE_PRED = x -> x.getId() == GLASSBLOWING_PIPE_ID;
 
     private long anim = 0;
 
