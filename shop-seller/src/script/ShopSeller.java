@@ -5,6 +5,7 @@ import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.component.Shop;
 import org.rspeer.runetek.api.component.WorldHopper;
+import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.scene.Npcs;
 import org.rspeer.runetek.providers.RSWorld;
 import org.rspeer.script.Script;
@@ -58,7 +59,7 @@ public class ShopSeller extends Script {
                 return false;
             }
 
-            if (Shop.sellTen(s)) {
+            if (Inventory.contains(s) && Shop.sellTen(s)) {
                 Time.sleepUntil(() -> Shop.getQuantity(s) >= 10, 3000);
             }
         }
