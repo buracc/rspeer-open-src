@@ -1,3 +1,5 @@
+package script;
+
 import org.rspeer.runetek.adapter.scene.Npc;
 import org.rspeer.runetek.api.Game;
 import org.rspeer.runetek.api.commons.Time;
