@@ -10,7 +10,7 @@ import org.rspeer.runetek.api.scene.SceneObjects;
 import org.rspeer.script.Script;
 import org.rspeer.script.ScriptMeta;
 
-@ScriptMeta(developer = "buracc", desc = "chops", name = "Chopper")
+@ScriptMeta(developer = "burak", desc = "chops", name = "Chopper")
 public class Chopper extends Script {
 
     private static final String TREE_NAME = "Oak";
