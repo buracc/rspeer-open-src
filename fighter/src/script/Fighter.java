@@ -21,12 +21,14 @@ public class Fighter extends Script {
     private static final int MIN_EAT_HEALTH = 10;
     private static final String EAT_ACTION = "Eat";
     private static final String ATTACK_ACTION = "Attack";
-    private static final String NPC_NAME = "Scorpion";
+    private static final String NPC_NAME = "Kalphite Worker";
 
     @Override
     public int loop() {
         Player local = Players.getLocal();
-        final Predicate<Npc> npcPred = x -> x.getName().equals(NPC_NAME) && (x.getTargetIndex() == local.getIndex() || x.getTargetIndex() == -1);
+        final Predicate<Npc> npcPred = x -> x.getName().equals(NPC_NAME)
+                        && ((x.getTarget() != null && x.getTarget().equals(local)) || x.getTargetIndex() == -1)
+                        && x.getHealthPercent() > 0;
         Npc targetNpc = Npcs.getNearest(npcPred);
         Item food = Inventory.getFirst(FOOD);
 
@@ -42,12 +44,10 @@ public class Fighter extends Script {
             food.interact(EAT_ACTION);
         }
 
-        if (local.getTargetIndex() == -1
-                && targetNpc != null
-                && targetNpc.interact(ATTACK_ACTION)) {
-            Time.sleepUntil(() -> local.getTargetIndex() != -1, 5000);
+        if (local.getTargetIndex() == -1) {
+            if (targetNpc != null
+                    && targetNpc.interact(ATTACK_ACTION)) Time.sleepUntil(() -> local.getTargetIndex() != -1, 5000);
         }
-
 
         return 600;
     }
